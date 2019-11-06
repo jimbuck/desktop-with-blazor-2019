@@ -1,0 +1,23 @@
+{
+  "name": "desktop-with-blazor-2019",
+  "version": "1.0.0",
+  "description": "Slides, demos and resources for the \"Building Desktop Apps with Blazor\" talk.",
+  "main": "index.js",
+  "scripts": {
+    "start": "prez ./slides ./slides/build --serve --theme=night",
+    "dev": "prez ./slides ./slides/build --serve --watch --theme=night"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimbuck/desktop-with-blazor-2019.git"
+  },
+  "author": "Jim Buck <jim@jimbuck.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jimbuck/desktop-with-blazor-2019/issues"
+  },
+  "homepage": "https://github.com/jimbuck/desktop-with-blazor-2019#readme",
+  "devDependencies": {
+    "prez": "^4.7.0"
+  }
+}
