@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Electron Demo</title>
+	<!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
+	<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+<body>
+	<h1>Electron Demo</h1>
+	<p>We are using node <script>document.write(process.versions.node);</script>, Chrome <script>document.write(process.versions.chrome);</script>, and Electron <script>document.write(process.versions.electron);</script>.</p>
+	<p id="stats-display"></p>
+
+	
+	<script>
+		const os = require('os');
+		const getCpuUsage = require('./services/cpu-usage');
+
+		setInterval(updateStats, 200);
+
+		function updateStats() {
+			const cpus = os.cpus();
+			const cpuUsage = getCpuUsage();
+			const statsDisplay = document.getElementById('stats-display');
+
+			statsDisplay.innerHTML = `<strong>CPUs:</strong> ${cpus.length}<br />
+<strong>CPU Model:</strong> ${cpus[0].model}<br />
+<strong>CPU Usage:</strong> ${cpuUsage}%<br />
+<strong>Memory:</strong> ${humanFileSize(os.freemem())}/${humanFileSize(os.totalmem())}<br />`;
+		}
+
+		function humanFileSize(size) {
+			const i = Math.floor(Math.log(size)/Math.log(1024));
+			return (size/Math.pow(1024, i)).toFixed(2) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
+		}
+	</script>
+</body>
+
+</html>

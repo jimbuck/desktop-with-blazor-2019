@@ -1,0 +1,12 @@
+{
+  "name": "electron-demo",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^7.1.1"
+  }
+}
