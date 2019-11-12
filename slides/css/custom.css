@@ -1,8 +1,8 @@
 /* custom styles can go here */
 
 :root {
-	--accent: #014A7D;
-	--accent-light: #015996;
+	--accent: #0177c9;
+	--accent-light: #0195fc;
 }
 
 .reveal .progress {
@@ -43,5 +43,13 @@
 }
 
 #intro-to-electron-architecture ul {
+	display: block;
+}
+
+#intro-to-electron-use-cases ul + h3 {
+	margin-top: 60px;
+}
+
+#intro-to-electron-use-cases ul {
 	display: block;
 }

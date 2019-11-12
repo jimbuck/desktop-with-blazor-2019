@@ -1,6 +1,7 @@
 ### History
 
-
+- Built for GitHub's Atom editor in 2013
+- Open sourced in 2014
 
 Note:
 

@@ -4,7 +4,6 @@
 - Reactive programming model
 - 100% C# and Razor
 - Optional JS-interop API
-- Successor to **WebForms**
 
 
 Note:

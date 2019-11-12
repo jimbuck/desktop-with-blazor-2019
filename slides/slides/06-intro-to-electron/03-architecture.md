@@ -1,8 +1,8 @@
 #### Main Process
 
 - Entry point
-- Node.js file
 - Primary process
+- Node.js file
 
 #### Renderer Process
 - Per window
