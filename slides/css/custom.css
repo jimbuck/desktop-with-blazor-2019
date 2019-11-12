@@ -14,7 +14,8 @@
 }
 
 .reveal a:hover {
-	color: var(--accent-light);
+	color: var(--accent);
+	filter: brightness(120%);
 }
 
 #title h1 {
