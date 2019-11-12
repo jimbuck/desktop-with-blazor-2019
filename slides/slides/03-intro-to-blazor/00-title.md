@@ -1,3 +1,9 @@
-# Intro to Blazor
+## Intro to Blazor
 
--- pic goes here --
+![Blazor Logo](images/blazor-logo-transparent.png)
+
+
+Note:
+
+- Who's heard of Blazor?
+- Who's used Blazor?

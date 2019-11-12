@@ -1,5 +1,46 @@
 /* custom styles can go here */
 
+:root {
+	--accent: #014A7D;
+	--accent-light: #015996;
+}
+
+.reveal .progress {
+	color: var(--accent);
+}
+
+.reveal a {
+	color: var(--accent);
+}
+
+.reveal a:hover {
+	color: var(--accent-light);
+}
+
 #title h1 {
 	font-size: 3em;
+}
+
+#title p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#agenda ol {
+	font-size: 34px;
+	width: 40%;
+}
+
+#intro-to-blazor-title img {
+	width: 460px;
+	padding: 20px;
+}
+
+#intro-to-electron-title img {
+	width: 460px;
+	padding: 20px;
+}
+
+#intro-to-electron-architecture ul {
+	display: block;
 }

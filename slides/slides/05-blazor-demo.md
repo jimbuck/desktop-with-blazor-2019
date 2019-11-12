@@ -1,4 +1,6 @@
-## Blazor Demo
+# Blazor Demo
+
+Note:
 
 ```sh
 cd 01-blazor-demo

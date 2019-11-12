@@ -1,4 +1,4 @@
-## History
+### History
 
 - Razor released 2010 with ASP.NET MVC 3
 - Code-focused HTML templates
@@ -6,3 +6,8 @@
 - Blazor created by Steve Sanderson
 - Experimental in February 2018
 - Official release in September 2019
+
+
+
+Note:
+
