@@ -10,29 +10,27 @@
 	<h1>Electron Demo</h1>
 	<p>We are using node <script>document.write(process.versions.node);</script>, Chrome <script>document.write(process.versions.chrome);</script>, and Electron <script>document.write(process.versions.electron);</script>.</p>
 	<p id="stats-display"></p>
+	<p id="graphs-display"></p>
 
-	
 	<script>
 		const os = require('os');
-		const getCpuUsage = require('./services/cpu-usage');
+		const { CpuUsageTracker } = require('./services/cpu-usage');
+		const { renderCpuGraphs } = require('./services/graph-helper');
+		const statsDisplay = document.getElementById('stats-display');
+		const graphsDisplay = document.getElementById('graphs-display');
+		let cpus = os.cpus();
+		const renderInterval = 1000;
 
-		setInterval(updateStats, 200);
+		const cpuTracker = new CpuUsageTracker(cpus);
+		const graphs = renderCpuGraphs(graphsDisplay, renderInterval, cpus);
 
-		function updateStats() {
-			const cpus = os.cpus();
-			const cpuUsage = getCpuUsage();
-			const statsDisplay = document.getElementById('stats-display');
+		setInterval(() => {
+			cpus = os.cpus();
 
-			statsDisplay.innerHTML = `<strong>CPUs:</strong> ${cpus.length}<br />
-<strong>CPU Model:</strong> ${cpus[0].model}<br />
-<strong>CPU Usage:</strong> ${cpuUsage}%<br />
-<strong>Memory:</strong> ${humanFileSize(os.freemem())}/${humanFileSize(os.totalmem())}<br />`;
-		}
-
-		function humanFileSize(size) {
-			const i = Math.floor(Math.log(size)/Math.log(1024));
-			return (size/Math.pow(1024, i)).toFixed(2) * 1 + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
-		}
+			const cpuStats = cpuTracker.update(cpus);
+			cpuTracker.renderStats(statsDisplay, cpus, cpuStats.total);
+			graphs.update(cpuStats.cpus);
+		}, renderInterval);
 	</script>
 </body>
 
