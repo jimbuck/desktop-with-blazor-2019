@@ -79,6 +79,7 @@ app {
     display: flex;
     align-items: center;
     line-height: 3rem;
+    cursor: default;
 }
 
 .nav-item a.active {
@@ -86,9 +87,10 @@ app {
     color: white;
 }
 
-.nav-item a:hover {
+.nav-item a:not(.readonly):hover {
     background-color: rgba(255,255,255,0.1);
     color: white;
+    cursor: pointer;
 }
 
 .content {
@@ -147,4 +149,37 @@ app {
         /* Never collapse the sidebar for wide screens */
         display: block;
     }
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+
+/* ADDED STYLES */
+
+html, body, app, .main > .content {
+    height: 100%;
+}
+
+.full-height {
+    height: 100%;
 }

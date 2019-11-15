@@ -1,0 +1,18 @@
+﻿@page "/complete"
+
+@using BlazorDemo.Data
+@inject UserData userData
+
+<form class="d-flex flex-column full-height" autoComplete="off" data-lpignore="true">
+    <h1>Complete</h1>
+    <div class="content full-height" style="flex-grow: 1;">
+        <div class="card">
+            <div class="card-body">
+                <p>Successfully imported @userData.Sessions.Count sessions!</p>
+            </div>
+        </div>
+    </div>
+    <div class="actions text-right">
+        <NavLink class="btn btn-primary" href="" Match="NavLinkMatch.All">Restart</NavLink>
+    </div>
+</form>
