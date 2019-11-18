@@ -21,12 +21,12 @@ function renderCpuGraphs(el, renderDelay, cpus) {
 
 	const canvas = document.createElement('canvas');
 	canvas.id = `cpu-graph`;
-	canvas.height = 200;
-	canvas.width = 600;
+	canvas.style = 'width: 100%; height: 200px;';
 	el.append(canvas);
 
 	const dataSet = cpus.map(() => new TimeSeries());
 	const graph = new SmoothieChart({
+		responsive: true,
 		millisPerPixel: 20,
 		grid: { strokeStyle: '#555555', lineWidth: 1, millisPerLine: 1000, verticalSections: 4 },
 		minValue:0, maxValue:100

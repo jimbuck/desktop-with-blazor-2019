@@ -44,8 +44,8 @@ class CpuUsageTracker {
 
 	renderStats(el, cpus, total) {
 		el.innerHTML = `<strong>CPUs:</strong> ${cpus.length}<br />
-<strong>CPU Model:</strong> ${cpus[0].model}<br />
-<strong>CPU Usage:</strong> ${total}%<br />
+<strong>Model:</strong> ${cpus[0].model}<br />
+<strong>Usage:</strong> ${total}%<br />
 <strong>Memory:</strong> ${_humanFileSize(os.freemem())}/${_humanFileSize(os.totalmem())}<br />`;
 	}
 }

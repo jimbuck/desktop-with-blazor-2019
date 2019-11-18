@@ -5,12 +5,41 @@
 	<title>Electron Demo</title>
 	<!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
 	<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+	<link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="./node_modules/popper.js/dist/popper.min.js"></script>
+	<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<style>
+		html, body, .container {
+			height: 100%;
+			background-color: #222;
+			color: #fff;
+		}
+
+		.container {
+			background-color: rgb(0, 52, 82);
+		}
+	</style>
 </head>
 <body>
-	<h1>Electron Demo</h1>
-	<p>We are using node <script>document.write(process.versions.node);</script>, Chrome <script>document.write(process.versions.chrome);</script>, and Electron <script>document.write(process.versions.electron);</script>.</p>
-	<p id="stats-display"></p>
-	<p id="graphs-display"></p>
+	<div class="container">
+		<h1>Electron Demo</h1>
+		<div class="row">
+			<div class="col-md-12">
+				<p>We are using node <script>document.write(process.versions.node);</script>, Chrome <script>document.write(process.versions.chrome);</script>, and Electron <script>document.write(process.versions.electron);</script>.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<p id="stats-display"></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<p id="graphs-display"></p>
+			</div>
+		</div>
+	</div>
 
 	<script>
 		const os = require('os');
@@ -24,13 +53,16 @@
 		const cpuTracker = new CpuUsageTracker(cpus);
 		const graphs = renderCpuGraphs(graphsDisplay, renderInterval, cpus);
 
-		setInterval(() => {
+		updateDisplay(true);
+		setInterval(updateDisplay, renderInterval);
+
+		function updateDisplay(firstRender) {
 			cpus = os.cpus();
 
 			const cpuStats = cpuTracker.update(cpus);
 			cpuTracker.renderStats(statsDisplay, cpus, cpuStats.total);
-			graphs.update(cpuStats.cpus);
-		}, renderInterval);
+			if(!firstRender) graphs.update(cpuStats.cpus);
+		}
 	</script>
 </body>
 

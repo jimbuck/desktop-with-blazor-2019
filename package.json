@@ -22,5 +22,6 @@
   "homepage": "https://github.com/jimbuck/desktop-with-blazor-2019#readme",
   "devDependencies": {
     "prez": "^4.7.0"
-  }
+  },
+  "dependencies": {}
 }
