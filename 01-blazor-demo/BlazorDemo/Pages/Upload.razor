@@ -1,32 +1,36 @@
 ﻿@page "/upload"
 
-@using BlazorDemo.Models
 @using BlazorDemo.Data
-@inject UserData userData
 
+@inject UserData userData
 @inject PhotoUploader photoUploader
 
 <form class="d-flex flex-column full-height" autoComplete="off" data-lpignore="true">
-    <h1>Upload</h1>
+    <div class="row">
+        <div class="col">
+            <h1>Upload</h1>
+        </div>
+        <div class="col text-right">
+            @if (filesUploaded)
+            {
+                <NavLink class="btn btn-primary" href="organize" Match="NavLinkMatch.Prefix">Next</NavLink>
+            }
+            else
+            {
+                <button class="btn btn-primary" disabled>Next</button>
+            }
+        </div>
+    </div>
+
     <div class="controls">
         <label class="btn btn-primary btn-file">
             Browse <input type="file" style="display: none;" @onchange="OnFileUploaded" />
         </label>
     </div>
     <div class="content full-height" style="flex-grow: 1;">
-        @if(filesUploaded)
-        {
-        <p>Loaded @userData.Photos.Count photos!</p>
-        }
-    </div>
-    <div class="actions text-right">
         @if (filesUploaded)
         {
-        <NavLink class="btn btn-primary" href="organize" Match="NavLinkMatch.Prefix">Next</NavLink>
-        }
-        else
-        {
-        <button class="btn btn-primary" disabled>Next</button>
+            <p>Loaded @userData.Photos.Count photos!</p>
         }
     </div>
 </form>
