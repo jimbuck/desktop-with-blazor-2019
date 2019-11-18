@@ -1,5 +1,26 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+@using BlazorDemo.Data
+@inject UserData userData
 
-Welcome to your new app.
+    <form class="d-flex flex-column full-height" autoComplete="off" data-lpignore="true">
+        <h1>Intro</h1>
+        <div class="content full-height" style="flex-grow: 1;">
+            <div class="card">
+                <div class="card-body">
+                    <p>The following tool will allow you to upload photos, organize them by photo session, and then tag each session.
+                    Follow the prompts to improve your photo collection!</p>
+                </div>
+            </div>
+        </div>
+        <div class="actions text-right">
+            <NavLink class="btn btn-primary" href="upload" Match="NavLinkMatch.Prefix">Begin</NavLink>
+        </div>
+    </form>
+
+@code {
+    protected override void OnInitialized()
+    {
+        userData.Reset();
+    }
+}

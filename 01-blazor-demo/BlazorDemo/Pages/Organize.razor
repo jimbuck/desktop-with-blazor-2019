@@ -1,0 +1,44 @@
+﻿@page "/organize"
+
+@using BlazorDemo.Data
+@using BlazorDemo.Services
+@using BlazorDemo.Components
+
+@inject UserData userData
+@inject PhotoUploader photoUploader
+@inject SessionService sessionService
+
+<form class="d-flex flex-column full-height" autoComplete="off" data-lpignore="true">
+    <h1>Organize</h1>
+    <div class="controls">
+        SLIDER GOES HERE...
+    </div>
+    <div class="content full-height" style="flex-grow: 1;margin-bottom: 6px;">
+        <div class="card full-height">
+            <div class="card-body full-height">
+                <div class="scroll-wrapper full-height" style="overflow-y: scroll;">
+                    <div class="scroll-container p-4">
+                        @foreach (var session in userData.Sessions)
+                        {
+                            <SessionDisplay Session="@session" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="actions text-right">
+        <NavLink class="btn btn-outline-secondary" href="" Match="NavLinkMatch.All">Cancel</NavLink>
+        <NavLink class="btn btn-primary" href="complete">Import</NavLink>
+    </div>
+</form>
+
+
+@code {
+    TimeSpan maxIdle = TimeSpan.FromHours(12);
+
+    protected override void OnInitialized()
+    {
+        userData.Sessions = sessionService.CreateSessions(userData.Photos, maxIdle);
+    }
+}
