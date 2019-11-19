@@ -43,7 +43,7 @@ namespace BlazorDemo.Data
             sessionGenerator.AddTimeframe(today.AddDays(-2).AddHours(17), TimeSpan.FromHours(5), 3);
             sessionGenerator.AddTimeframe(today.AddDays(-1).AddHours(09), TimeSpan.FromHours(3), 2);
 
-            return sessionGenerator.GetTimestamps(count);
+            return sessionGenerator.GetTimestamps(count+1);
         }
 
         private IList<T> Shuffle<T>(IList<T> list)

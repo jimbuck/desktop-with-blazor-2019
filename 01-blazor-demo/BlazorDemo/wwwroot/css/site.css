@@ -190,6 +190,33 @@ html, body, app, .main > .content {
     justify-content: center;
 }
 
+.photo-container.selected::before,
+.photo-container.selected::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.photo-container.selected::before {
+    border-width: 1.5em;
+    border-right-color: #ccc;
+    border-top-color: #ccc;
+}
+
+.photo-container.selected::after {
+    border-radius: 0.4em;
+    border-width: 1.35em;
+    border-right-color: #0c0;
+    border-top-color: #0c0;
+}
+
+.photo-container .selection-indicator:hover {
+    opacity: 0.9;
+}
+
 .photo-container .card-body {
     padding: 0.25rem;
     text-align: center;

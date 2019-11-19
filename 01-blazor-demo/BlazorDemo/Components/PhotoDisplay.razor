@@ -1,7 +1,8 @@
 ﻿@using BlazorDemo.Models
 
-<div class="photo-container card">
+<div class="photo-container card @(photo.Selected ? "selected" : null)">
     <img class="card-img-top" src="@photo.Path" />
+    <div class="selection-indicator"></div>
     <div class="card-body">
         <span>@photo.DateTaken</span>
     </div>
@@ -10,7 +11,4 @@
 @code {
     [Parameter]
     public Photo photo { get; set; }
-
-    [Parameter]
-    public bool Selected { get; set; }
 }

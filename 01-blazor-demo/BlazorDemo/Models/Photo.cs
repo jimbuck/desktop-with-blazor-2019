@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlazorDemo.Models
 {
@@ -9,6 +6,7 @@ namespace BlazorDemo.Models
     {
         public string Path { get; set; }
         public DateTime DateTaken { get; set; }
+        public bool Selected { get; set; }
 
         public Photo(string path, string dateTaken)
         {
