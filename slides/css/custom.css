@@ -18,6 +18,9 @@
 	filter: brightness(120%);
 }
 
+.reveal pre { line-height: 0.8em; }
+.reveal pre code { max-height: 610px; }
+
 #title h1 {
 	font-size: 3em;
 }

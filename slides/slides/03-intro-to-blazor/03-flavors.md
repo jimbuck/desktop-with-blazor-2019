@@ -1,8 +1,10 @@
 ### Flavors of Blazor
 
-- Blazor Server
 - Blazor WebAssembly
+- Blazor Server
 - Hybrid
 - Native
 
 Note:
+
+- Architectural differences

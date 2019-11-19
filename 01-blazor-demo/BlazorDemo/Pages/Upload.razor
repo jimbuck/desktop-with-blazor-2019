@@ -2,6 +2,7 @@
 
 @using BlazorDemo.Data
 
+@inject NavigationManager navMgr
 @inject UserData userData
 @inject PhotoUploader photoUploader
 
@@ -13,7 +14,7 @@
         <div class="col text-right">
             @if (filesUploaded)
             {
-                <NavLink class="btn btn-primary" href="organize" Match="NavLinkMatch.Prefix">Next</NavLink>
+                <NavLink class="btn btn-primary" href="/organize" Match="NavLinkMatch.Prefix">Next</NavLink>
             }
             else
             {
@@ -39,9 +40,13 @@
 @code {
     bool filesUploaded = false;
 
-    void OnFileUploaded(object e)
+    async Task OnFileUploaded(object e)
     {
         userData.Photos = photoUploader.GetPhotos();
         filesUploaded = userData.Photos.Any();
+
+        await Task.Delay(1000);
+
+        navMgr.NavigateTo("/organize");
     }
 }

@@ -8,3 +8,6 @@
 
 Note:
 
+- Custom elements
+- Logical data-flow
+- Wrap JS libs in C#

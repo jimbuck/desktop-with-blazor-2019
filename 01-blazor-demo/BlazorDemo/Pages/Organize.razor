@@ -16,8 +16,8 @@
                     <h1>Organize</h1>
                 </div>
                 <div class="col text-right">
-                    <NavLink class="btn btn-outline-secondary" href="" Match="NavLinkMatch.All">Restart</NavLink>
-                    <NavLink class="btn btn-primary" href="complete">Cancel</NavLink>
+                    <NavLink class="btn btn-outline-secondary" href="/upload" Match="NavLinkMatch.All">Restart</NavLink>
+                    <NavLink class="btn btn-primary" href="/complete">Import</NavLink>
                 </div>
             </div>
             <div class="row controls">
@@ -27,16 +27,14 @@
             </div>
         </div>
         <div class="bottom full-height" style="overflow: hidden;margin-bottom: 6px;">
-            <div class="card full-height">
-                <div class="card-body full-height">
-                    <div class="scroll-wrapper full-height" style="overflow-y: scroll;">
-                        <div class="scroll-container p-4">
-                            @foreach (var session in userData.Sessions)
-                            {
-                                <SessionDisplay Session="@session" />
-                            }
+            <div class="scroll-wrapper full-height" style="overflow-y: scroll;">
+                <div class="scroll-container p-4 list-group">
+                    @foreach (var session in userData.Sessions)
+                    {
+                        <div class="list-group-item">
+                            <SessionDisplay Session="@session" />
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
@@ -60,7 +58,7 @@
     {
         if(!userData.Photos.Any())
         {
-            navMgr.NavigateTo("/");
+            userData.Photos = photoUploader.GetPhotos();
         }
 
         userData.Sessions = sessionService.CreateSessions(userData.Photos, MaxIdle);

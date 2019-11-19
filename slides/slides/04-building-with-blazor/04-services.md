@@ -7,4 +7,5 @@
 
 Note:
 
-- Singleton and transient are the same
+- Singleton, Scoped, Transient
+- Singleton and Transient are the same

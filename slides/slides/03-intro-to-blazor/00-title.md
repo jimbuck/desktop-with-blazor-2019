@@ -5,5 +5,7 @@
 
 Note:
 
-- Who's heard of Blazor?
-- Who's used Blazor?
+- Raise hand if:
+  - used ASP.NET MVC?
+  - heard of Blazor?
+  - used Blazor?

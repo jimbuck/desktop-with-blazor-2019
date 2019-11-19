@@ -11,15 +11,15 @@
             <h1>Complete</h1>
         </div>
         <div class="col text-right">
-            <NavLink class="btn btn-primary" href="" Match="NavLinkMatch.All">Restart</NavLink>
+            <NavLink class="btn btn-primary" href="/" Match="NavLinkMatch.All">Restart</NavLink>
         </div>
     </div>
-    <div class="content full-height" style="flex-grow: 1;">
-        <div class="card">
-            <div class="card-body">
-                <p>Successfully imported @userData.Sessions.Count sessions!</p>
-                <table class="table table-bordered">
-                    <tbody>
+    <div class="row" style="flex-grow: 1;">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <p>Successfully imported @userData.Sessions.Count sessions!</p>
+                    <table class="table table-bordered">
                         @foreach (var session in userData.Sessions)
                         {
                             <tr>
@@ -27,8 +27,8 @@
                                 <td>@session.Photos.Count</td>
                             </tr>
                         }
-                    </tbody>
-                </table>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

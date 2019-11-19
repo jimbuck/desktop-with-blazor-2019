@@ -232,3 +232,29 @@ input[type=range] {
         background: rgb(5, 39, 103);
         cursor: pointer;
     }
+
+.photo-spread {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+    .photo-spread img {
+        background-color: #999;
+        width: 10%;
+        border: 1px solid white;
+        box-shadow: 0 1px 3px -2px rgba(0,0,0,.5);
+        margin-left: -20px;
+        margin-top: -10px;
+    }
+    .photo-spreadddd img:hover {
+        transform: rotate3d(0,0,1,0deg);
+        z-index: 999;
+        transition: transform 0.5s linear;
+    }
+    .photo-spread .rand0 { transform: rotate3d(0,0,1, 0deg); margin-left: -19px; }
+    .photo-spread .rand1 { transform: rotate3d(0,0,1,-2deg); margin-left: -22px; }
+    .photo-spread .rand2 { transform: rotate3d(0,0,1, 3deg); margin-left: -20px; }
+    .photo-spread .rand3 { transform: rotate3d(0,0,1,-3deg); margin-left: -18px; }
+    .photo-spread .rand4 { transform: rotate3d(0,0,1, 2deg); margin-left: -21px; }

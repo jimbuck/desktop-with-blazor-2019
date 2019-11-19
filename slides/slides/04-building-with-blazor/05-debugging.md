@@ -3,9 +3,10 @@
 - Breakpoints in `.cshtml`/`.razor`
 - Kinda slow
 - `dotnet watch run`
-- Wishlist:
-  - Edit & Continue
-  - Live Reload (CSS/HTML changes)
+- Room for improvement
 
 Note:
 
+- Wishlist:
+  - Edit & Continue
+  - Live Reload (CSS/HTML changes)

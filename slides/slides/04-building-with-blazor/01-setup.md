@@ -7,3 +7,4 @@
 
 Note:
 
+- VS2019 has templates
