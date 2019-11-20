@@ -19,21 +19,46 @@
 		.container {
 			background-color: rgb(0, 52, 82);
 		}
+
+		video {
+			border: 2px solid #fff;
+			position: relative;
+		}
+		.video-dot {
+			width: 10px;
+			height: 10px;
+			position: absolute;
+			top: 8px;
+			right: 22px;
+			background-color: #f00;
+			border-radius: 5px;
+			opacity: 0;
+		}
+		.video-dot.capturing {
+			opacity: 1;
+			animation: blink 1s step-start 0s infinite;
+		}
+
+		@keyframes blink {
+			50% {
+				opacity: 0;
+			}
+		}
 	</style>
 </head>
 <body>
 	<div class="container">
 		<h1>Electron Demo</h1>
 		<div class="row">
-			<div class="col-md-12">
-				<p>We are using node <script>document.write(process.versions.node);</script>, Chrome <script>document.write(process.versions.chrome);</script>, and Electron <script>document.write(process.versions.electron);</script>.</p>
+				<div class="col-md-6">
+					<p>We are using node <script>document.write(process.versions.node);</script>, Chrome <script>document.write(process.versions.chrome);</script>, and Electron <script>document.write(process.versions.electron);</script>.</p>
+					<p id="stats-display"></p>
+				</div>
+				<div class="col-md-6 text-right">
+						<video height="200">WebCam not found!</video>
+						<div class="video-dot"></div>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<p id="stats-display"></p>
-			</div>
-		</div>
 		<div class="row">
 			<div class="col-md-12">
 				<p id="graphs-display"></p>
@@ -63,6 +88,14 @@
 			cpuTracker.renderStats(statsDisplay, cpus, cpuStats.total);
 			if(!firstRender) graphs.update(cpuStats.cpus);
 		}
+	</script>
+	<script>
+		navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: 'environment' } }).then((localMediaStream) => {
+        let video = document.querySelector('video');
+        video.srcObject = localMediaStream;
+				video.autoplay = true;
+				document.querySelector('.video-dot').classList.add('capturing');
+     }, console.error);
 	</script>
 </body>
 
