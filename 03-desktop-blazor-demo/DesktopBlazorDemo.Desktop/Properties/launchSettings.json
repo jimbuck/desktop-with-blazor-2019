@@ -1,0 +1,20 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:32908/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "ElectronNET": {
+      "executablePath": "dotnet",
+      "commandLineArgs": "electronize start",
+      "workingDirectory": ".",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
