@@ -22,9 +22,6 @@
 
 Note:
 
-- MVC -> `Models`, `Views`, `Controllers` folders
-- `pages` folder
-- `_Host.cshtml` has layout page
 - `@page 'about'`
 - Standard razor syntax 
   - (variables, loops, conditionals, etc.)

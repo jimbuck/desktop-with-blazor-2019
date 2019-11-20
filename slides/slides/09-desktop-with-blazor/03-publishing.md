@@ -8,6 +8,11 @@ dotnet electronize build /target osx
 dotnet electronize build /target linux
 ```
 
+<br/>
+
+- Unpacked binaries
+- Installer
+
 Note:
 
 - Creates installer
