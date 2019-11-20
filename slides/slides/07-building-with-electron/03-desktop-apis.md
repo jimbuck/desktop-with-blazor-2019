@@ -1,4 +1,0 @@
-### Desktop APIs
-
-Note:
-

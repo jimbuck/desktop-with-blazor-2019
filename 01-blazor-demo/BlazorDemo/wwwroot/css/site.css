@@ -190,31 +190,32 @@ html, body, app, .main > .content {
     justify-content: center;
 }
 
-.photo-container.selected::before,
-.photo-container.selected::after {
+.photo-container {
+    cursor: pointer;
+}
+
+.photo-container::before {
     content: '';
     position: absolute;
     top: 0;
     right: 0;
     border-color: transparent;
     border-style: solid;
+    
 }
 
-.photo-container.selected::before {
+.photo-container::before {
     border-width: 1.5em;
-    border-right-color: #ccc;
-    border-top-color: #ccc;
+    border-right-color: rgba(255, 255, 255, 0.2);
+    border-top-color: rgba(255, 255, 255, 0.2);
 }
-
-.photo-container.selected::after {
-    border-radius: 0.4em;
-    border-width: 1.35em;
-    border-right-color: #0c0;
-    border-top-color: #0c0;
+.photo-container:hover::before {
+    border-right-color: rgba(255, 255, 255, 0.6);
+    border-top-color: rgba(255, 255, 255, 0.6);
 }
-
-.photo-container .selection-indicator:hover {
-    opacity: 0.9;
+.photo-container.selected::before {
+    border-right-color: rgba(255, 255, 255, 0.95);
+    border-top-color: rgba(255, 255, 255, 0.95);
 }
 
 .photo-container .card-body {

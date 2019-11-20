@@ -1,6 +1,6 @@
 ### Usage
 
-- Add electron specifics to Startup.cs
+- Add ElectronNET specifics to Startup.cs
 - `dotnet electronize start`
 - Open DevTools
 

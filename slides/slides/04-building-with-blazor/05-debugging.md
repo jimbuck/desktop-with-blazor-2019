@@ -3,7 +3,7 @@
 - Breakpoints in `.cshtml`/`.razor`
 - Kinda slow
 - `dotnet watch run`
-- Room for improvement
+- Improvements are planned
 
 Note:
 
