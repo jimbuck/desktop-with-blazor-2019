@@ -1,0 +1,13 @@
+﻿@using DesktopBlazorDemo.Core.Models
+
+<div class="photo-container card "> @* @(photo.Selected ? "selected" : null)"> *@
+    <img class="card-img-top" src="@photo.Path" />
+    <div class="card-body">
+        <span>@photo.DateTaken</span>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Photo photo { get; set; }
+}

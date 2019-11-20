@@ -1,0 +1,25 @@
+﻿
+<div class="d-flex flex-row">
+    <div class="display" style="width: 160px;">
+        <strong>Max Idle:</strong> @(MaxIdle.TotalHours)hrs
+    </div>
+    <div class="control center-vert" style="flex-grow: 1;">
+        <input type="range" min="1" max="72" step="1" value="@MaxIdle.TotalHours" @onchange="OnMaxIdleChanged" style="width: 100%;" />
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public TimeSpan MaxIdle { get; set; }
+
+    [Parameter]
+    public EventCallback<TimeSpan> MaxIdleChanged { get; set; }
+
+    private Task OnMaxIdleChanged(ChangeEventArgs e)
+    {
+        var maxIdle = TimeSpan.FromHours(int.Parse(e.Value.ToString()));
+
+        return MaxIdleChanged.InvokeAsync(maxIdle);
+    }
+}

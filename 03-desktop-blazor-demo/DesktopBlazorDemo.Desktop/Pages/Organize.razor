@@ -1,0 +1,65 @@
+﻿@page "/organize"
+
+@using DesktopBlazorDemo.Core.Data
+@using DesktopBlazorDemo.Core.Services
+
+@inject NavigationManager navMgr
+@inject UserData userData
+@inject PhotoUploader photoUploader
+@inject SessionService sessionService
+
+    <form class="d-flex flex-column full-height" autoComplete="off" data-lpignore="true">
+        <div class="top" style="margin-bottom: 20px;">
+            <div class="row">
+                <div class="col">
+                    <h1>Organize</h1>
+                </div>
+                <div class="col text-right">
+                    <NavLink class="btn btn-outline-secondary" href="/upload" Match="NavLinkMatch.All">Restart</NavLink>
+                    <NavLink class="btn btn-primary" href="/complete">Import</NavLink>
+                </div>
+            </div>
+            <div class="row controls">
+                <div class="col">
+                    <MaxIdleSlider @bind-MaxIdle="MaxIdle" />
+                </div>
+            </div>
+        </div>
+        <div class="bottom full-height" style="overflow: hidden;margin-bottom: 6px;">
+            <div class="scroll-wrapper full-height" style="overflow-y: scroll;">
+                <div class="scroll-container p-4 list-group">
+                    @foreach (var session in userData.Sessions)
+                    {
+                        <div class="list-group-item">
+                            <SessionDisplay Session="@session" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+@code {
+    private TimeSpan _maxIdle = TimeSpan.FromHours(12);
+
+    public TimeSpan MaxIdle
+    {
+        get { return _maxIdle; }
+        set
+        {
+            _maxIdle = value;
+            userData.Sessions = sessionService.CreateSessions(userData.Photos, _maxIdle);
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        if(!userData.Photos.Any())
+        {
+            userData.Photos = photoUploader.GetPhotos();
+        }
+
+        userData.Sessions = sessionService.CreateSessions(userData.Photos, MaxIdle);
+    }
+}

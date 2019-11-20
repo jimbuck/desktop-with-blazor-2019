@@ -1,0 +1,45 @@
+﻿@page "/complete"
+
+@using DesktopBlazorDemo.Core.Data
+
+@inject NavigationManager navMgr
+@inject UserData userData
+
+<form class="d-flex flex-column full-height" autoComplete="off" data-lpignore="true">
+    <div class="row">
+        <div class="col">
+            <h1>Complete</h1>
+        </div>
+        <div class="col text-right">
+            <NavLink class="btn btn-primary" href="/" Match="NavLinkMatch.All">Restart</NavLink>
+        </div>
+    </div>
+    <div class="row" style="flex-grow: 1;">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <p>Successfully imported @userData.Sessions.Count sessions!</p>
+                    <table class="table table-bordered">
+                        @foreach (var session in userData.Sessions)
+                        {
+                            <tr>
+                                <th>@session.Name</th>
+                                <td>@session.Photos.Count</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@code {
+    protected override void OnInitialized()
+    {
+        if (!userData.Photos.Any())
+        {
+            navMgr.NavigateTo("/");
+        }
+    }
+}

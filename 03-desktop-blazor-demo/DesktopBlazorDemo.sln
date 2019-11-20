@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesktopBlazorDemo.Core", "DesktopBlazorDemo.Core\DesktopBlazorDemo.Core.csproj", "{747C22CC-0E3E-4028-AE5F-9ECFF535B4F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesktopBlazorDemo.Desktop", "DesktopBlazorDemo.Desktop\DesktopBlazorDemo.Desktop.csproj", "{0D716195-B7C4-45EC-B6BE-F6FF6CAA63BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{747C22CC-0E3E-4028-AE5F-9ECFF535B4F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{747C22CC-0E3E-4028-AE5F-9ECFF535B4F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{747C22CC-0E3E-4028-AE5F-9ECFF535B4F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{747C22CC-0E3E-4028-AE5F-9ECFF535B4F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D716195-B7C4-45EC-B6BE-F6FF6CAA63BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D716195-B7C4-45EC-B6BE-F6FF6CAA63BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D716195-B7C4-45EC-B6BE-F6FF6CAA63BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D716195-B7C4-45EC-B6BE-F6FF6CAA63BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76A5BE5D-7040-4436-B6E9-D77B6662C78D}
+	EndGlobalSection
+EndGlobal

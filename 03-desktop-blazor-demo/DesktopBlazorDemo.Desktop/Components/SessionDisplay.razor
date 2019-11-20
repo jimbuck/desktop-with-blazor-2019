@@ -1,0 +1,60 @@
+﻿@using DesktopBlazorDemo.Core.Models
+
+    <div class="session-container mb-4">
+        <div class="session-header">
+            <div class="form-group row">
+                <div class="col-auto">
+                    <input type="text" class="form-control" placeholder="Session Name" data-lpignore="true" @bind-value="session.Name" style="width: 240px;" />
+                </div>
+                <div class="col-auto mr-auto pt-2">
+                    @session.StartTime - @session.EndTime
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-outline-primary" type="button" @onclick="ToggleSessionContent" style="margin-left: 6px;width: 42px;">
+                        @if (collapsed)
+                        {
+                            <span class="oi oi-grid-two-up" aria-hidden="true"></span>
+                        }
+                        else
+                        {
+                            <span class="oi oi-grid-four-up" aria-hidden="true"></span>
+                        }
+                    </button>
+                </div>
+            </div>
+        </div>
+        @if (!collapsed)
+        {
+            <div class="session-photos d-flex flex-wrap" style="margin: 4px;">
+                @foreach (var photo in session.Photos)
+                {
+                    <div style="width: 18rem; padding: 4px;" @onclick="@(() => OnClickPhoto(photo))">
+                        <PhotoDisplay Photo="@photo" />
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="session-photo-spread" style="margin: 4px;">
+                <PhotoSpread Photos="@session.Photos" />
+            </div>
+        }
+    </div>
+
+@code {
+    [Parameter]
+    public Session session { get; set; }
+
+    bool collapsed = true;
+
+    void ToggleSessionContent()
+    {
+        collapsed = !collapsed;
+    }
+
+    void OnClickPhoto(Photo photo)
+    {
+        photo.Selected = !photo.Selected;
+    }
+}

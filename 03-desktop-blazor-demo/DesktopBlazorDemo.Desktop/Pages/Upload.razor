@@ -1,0 +1,52 @@
+﻿@page "/upload"
+
+@using DesktopBlazorDemo.Core.Data
+
+@inject NavigationManager navMgr
+@inject UserData userData
+@inject PhotoUploader photoUploader
+
+<form class="d-flex flex-column full-height" autoComplete="off" data-lpignore="true">
+    <div class="row">
+        <div class="col">
+            <h1>Upload</h1>
+        </div>
+        <div class="col text-right">
+            @if (filesUploaded)
+            {
+                <NavLink class="btn btn-primary" href="/organize" Match="NavLinkMatch.Prefix">Next</NavLink>
+            }
+            else
+            {
+                <button class="btn btn-primary" disabled>Next</button>
+            }
+        </div>
+    </div>
+
+    <div class="controls">
+        <label class="btn btn-primary btn-file">
+            Browse <input type="file" style="display: none;" @onchange="OnFileUploaded" />
+        </label>
+    </div>
+    <div class="content full-height" style="flex-grow: 1;">
+        @if (filesUploaded)
+        {
+            <p>Loaded @userData.Photos.Count photos!</p>
+        }
+    </div>
+</form>
+
+
+@code {
+    bool filesUploaded = false;
+
+    async Task OnFileUploaded(object e)
+    {
+        userData.Photos = photoUploader.GetPhotos();
+        filesUploaded = userData.Photos.Any();
+
+        //await Task.Delay(1000);
+
+        //navMgr.NavigateTo("/organize");
+    }
+}

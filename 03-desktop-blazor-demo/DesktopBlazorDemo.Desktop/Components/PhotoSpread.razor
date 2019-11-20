@@ -1,0 +1,14 @@
+﻿@using DesktopBlazorDemo.Core.Models
+
+<div class="photo-spread">
+    @foreach (var photo in Photos) {
+        <img src="@photo.Path" class="rand@(rand.Next(0, 5))" />
+    }
+</div>
+
+@code {
+    private Random rand = new Random();
+
+    [Parameter]
+    public List<Photo> Photos { get; set; }
+}

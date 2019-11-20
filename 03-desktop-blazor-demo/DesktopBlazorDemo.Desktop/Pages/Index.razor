@@ -1,0 +1,30 @@
+﻿@page "/"
+
+@using DesktopBlazorDemo.Core.Data
+@inject UserData userData
+
+    <form class="d-flex flex-column full-height" autoComplete="off" data-lpignore="true">
+        <div class="row">
+            <div class="col">
+                <h1>Intro</h1>
+            </div>
+            <div class="col text-right">
+                <NavLink class="btn btn-primary" href="/upload" Match="NavLinkMatch.Prefix">Begin</NavLink>
+            </div>
+        </div>
+        
+        <div class="content full-height" style="flex-grow: 1;">
+            <div class="card">
+                <div class="card-body">
+                    <p>The following tool will allow you to upload photos, organize them by photo session, and then tag each session.</p>
+                </div>
+            </div>
+        </div>
+    </form>
+
+@code {
+    protected override void OnInitialized()
+    {
+        userData.Reset();
+    }
+}
