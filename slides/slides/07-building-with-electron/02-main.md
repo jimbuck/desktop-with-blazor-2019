@@ -12,5 +12,9 @@ app.on('ready', () => {
 
 Note:
 
-- Keep `let win;` to avoid garbage collection.
+- Node.js and `npm install electron`
+- Single JS entry point (`main.js`)
+  - Wait for app
+  - Create and load `BrowserWindow`
+
 - Options for size, position, menus, dev tools, kiosk mode, etc.

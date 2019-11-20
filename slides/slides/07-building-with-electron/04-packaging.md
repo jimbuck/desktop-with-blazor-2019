@@ -3,8 +3,7 @@
 - Executable or installer
 - Mac required to build for OSX, Windows and Linux aren't limited.
 - [`electron-forge`](forge), [`electron-builder`](builder), [`electron-packager`](packager)
-- Compile to `asar` archive, 
-- Auto-update via [update.electronjs.org](https://github.com/electron/update.electronjs.org)
+- Auto-update
 
 
 Note:
