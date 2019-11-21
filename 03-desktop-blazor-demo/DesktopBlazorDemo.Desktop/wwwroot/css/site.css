@@ -266,6 +266,7 @@ input[type=range] {
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
+    align-items: flex-start;
     padding-left: 20px;
     padding-top: 10px;
 }

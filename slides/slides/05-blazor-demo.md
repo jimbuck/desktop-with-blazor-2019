@@ -2,10 +2,13 @@
 
 Note:
 
+**DEMO FIRST**
+
 ```sh
 cd 01-blazor-demo
 dotnet start BlazorDemo
 ```
-
-- Routing (NavigationManager)
-- Custom components
+- Show the `Organize` page.
+- Dig into `MaxIdleSlider` component.
+- Routing (`NavigationManager`)
+- Shared data (`UserData`)

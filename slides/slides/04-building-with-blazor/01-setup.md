@@ -8,3 +8,6 @@
 Note:
 
 - VS2019 has templates
+- MVC -> `Models`, `Views`, `Controllers` folders
+- Blazor -> `Pages`, `Models`
+- `_Host.cshtml` has layout page
