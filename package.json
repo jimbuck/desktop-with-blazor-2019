@@ -6,9 +6,7 @@
   "scripts": {
     "start": "prez ./slides ./slides/build --serve --theme=night --highlight-theme=vs2015",
     "dev": "prez ./slides ./slides/build --serve --watch --theme=night --highlight-theme=vs2015",
-    "blazor-web": "dotnet run -p ./01-blazor-demo/BlazorDemo",
-    "electron": "npm start --prefix ./02-electron-demo",
-    "blazor-desktop": "dotnet run -p ./03-desktop-demo/DesktopDemo"
+    "build": "prez ./slides ./slides/build --theme=night --highlight-theme=vs2015"
   },
   "repository": {
     "type": "git",
