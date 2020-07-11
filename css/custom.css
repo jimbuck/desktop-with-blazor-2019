@@ -1,0 +1,67 @@
+/* custom styles can go here */
+
+:root {
+	--accent: #0177c9;
+	--accent-light: #0195fc;
+}
+
+.reveal .progress {
+	color: var(--accent);
+}
+
+.reveal a {
+	color: var(--accent);
+}
+
+.reveal a:hover {
+	color: var(--accent);
+	filter: brightness(120%);
+}
+
+.reveal pre { line-height: 0.7em; }
+.reveal pre code {
+	max-height: 600px;
+	background-color: #1E1E1E;
+}
+a > code,
+p > code {
+	background-color: #1E1E1E;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+#title h1 {
+	font-size: 3em;
+}
+
+#title p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#agenda ol {
+	font-size: 34px;
+	width: 40%;
+}
+
+#intro-to-blazor-title img {
+	width: 460px;
+	padding: 20px;
+}
+
+#intro-to-electron-title img {
+	width: 460px;
+	padding: 20px;
+}
+
+#intro-to-electron-architecture ul {
+	display: block;
+}
+
+#intro-to-electron-use-cases ul + h3 {
+	margin-top: 60px;
+}
+
+#intro-to-electron-use-cases ul {
+	display: block;
+}

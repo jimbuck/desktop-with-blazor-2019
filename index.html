@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>desktop-with-blazor-2019</title>
+
+    <meta name="description" content="Slides, demos and resources for the &quot;Building Desktop Apps with Blazor&quot; talk.">
+    <meta name="author" content="Jim Buck &lt;jim@jimbuck.io&gt;">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="css/highlight/styles/vs2015.css" id="highlight-theme">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <link rel="stylesheet" href="css/custom.css">
+
+  </head>
+
+  <body>
+
+    <div class="reveal">
+      <div class="slides"><section id="title" class="slide" data-has-notes="true">
+<h1>Building Desktop Apps with Blazor</h1><p>Jim Buck</p>
+<p><a href="https://twitter.com/jimbuckio">@jimbuckio</a></p>
+<p><a href="https://jimbuck.io">https://jimbuck.io</a></p>
+<p>November 20, 2019</p><aside class="notes"><ul>
+<li><p>Thanks for joining</p>
+</li>
+<li><p>Move fast, fun demos</p>
+</li>
+</ul></aside>
+</section>
+
+<section id="agenda" class="slide" data-has-notes="false">
+<h2>Agenda</h2><ol>
+<li><p>Blazor</p>
+</li>
+<li><p>Demo</p>
+</li>
+<li><p>Electron</p>
+</li>
+<li><p>Demo</p>
+</li>
+<li><p>Desktop Blazor</p>
+</li>
+<li><p>Demo</p>
+</li>
+</ol>
+</section>
+
+<section id="chapter-intro-to-blazor" class="chapter">
+<section id="intro-to-blazor-title" class="slide" data-has-notes="true">
+<h2>Intro to Blazor</h2><p><img src="images/blazor-logo-transparent.png" alt="Blazor Logo"></p><aside class="notes"><ul>
+<li><p>Raise hand if:</p>
+<ul>
+<li><p>used ASP.NET MVC?</p>
+</li>
+<li><p>heard of Blazor?</p>
+</li>
+<li><p>used Blazor?</p>
+</li>
+</ul>
+</li>
+</ul></aside>
+</section>
+
+<section id="intro-to-blazor-details" class="slide" data-has-notes="true">
+<h3>What is Blazor?</h3><ul>
+<li><p>Component-based UI framework</p>
+</li>
+<li><p>Reactive programming model</p>
+</li>
+<li><p>100% C# and Razor</p>
+</li>
+<li><p>Optional JS-interop API</p>
+</li>
+</ul><aside class="notes"><ul>
+<li><p>Custom elements</p>
+</li>
+<li><p>Logical data-flow</p>
+</li>
+<li><p>Wrap JS libs in C#</p>
+</li>
+</ul></aside>
+</section>
+
+<section id="intro-to-blazor-flavors" class="slide" data-has-notes="true">
+<h3>Flavors of Blazor</h3><ul>
+<li><p>Blazor WebAssembly</p>
+</li>
+<li><p>Blazor Server</p>
+</li>
+<li><p>Hybrid</p>
+</li>
+<li><p>Native</p>
+</li>
+</ul><aside class="notes"><ul>
+<li>Architectural differences</li>
+</ul></aside>
+</section>
+
+<section id="intro-to-blazor-webassembly" class="slide" data-has-notes="true">
+<h3>Blazor WebAssmebly</h3><ul>
+<li><p>Client downloads runtime and DLLs.</p>
+</li>
+<li><p>Powered by Mono (<code>wasm</code> and <code>mono</code>)</p>
+</li>
+<li><p>Supports PWA&#39;s</p>
+</li>
+<li><p>Releasing with ASP.NET Core 3.1</p>
+</li>
+</ul><aside class="notes"><ul>
+<li><p>Large app size (CDNs, tree-shaking)</p>
+</li>
+<li><p>Slow load (AOT, Ready-to-Run)</p>
+</li>
+<li><p>Release date: December 2019</p>
+</li>
+</ul></aside>
+</section>
+
+<section id="intro-to-blazor-server" class="slide" data-has-notes="true">
+<h3>Blazor Server</h3><ul>
+<li><p>All domain logic is on server</p>
+</li>
+<li><p>Prerender page on request</p>
+</li>
+<li><p>Input sent to server via SignalR</p>
+</li>
+<li><p>DOM diff sent back to client</p>
+</li>
+</ul><aside class="notes"><ul>
+<li><p>Bandwith sensitive</p>
+</li>
+<li><p>SignalR lifeline</p>
+</li>
+</ul></aside>
+</section>
+
+<section id="intro-to-blazor-other" class="slide" data-has-notes="true">
+<h4>Blazor Hybrid</h4><ul>
+<li><p>Server when connected</p>
+</li>
+<li><p>WebAssembly when disconnected</p>
+</li>
+<li><p>Not officially announced, but &quot;planned&quot;</p>
+</li>
+</ul>
+<h4>Blazor Native</h4><ul>
+<li><p>Non-HTML rendering (native controls)</p>
+</li>
+<li><p>Totally unofficial, pipe dream</p>
+</li>
+</ul>
+</section>
+
+<section id="intro-to-blazor-use-cases" class="slide" data-has-notes="true">
+<h3>Use Cases</h3><ul>
+<li><p>Traditional .NET development team</p>
+</li>
+<li><p>Migrating from <strong>WebForms</strong> or MVC</p>
+</li>
+<li><p>Full-stack, single vendor</p>
+</li>
+</ul><aside class="notes"><ul>
+<li>Successor to WebForms</li>
+</ul></aside>
+</section>
+</section>
+
+<section id="chapter-building-with-blazor" class="chapter">
+<section id="building-with-blazor-title" class="slide" data-has-notes="true">
+<h2>Building with Blazor</h2>
+</section>
+
+<section id="building-with-blazor-setup" class="slide" data-has-notes="true">
+<h3>Setup</h3><ul>
+<li><p>.NET Core SDK 3.0</p>
+</li>
+<li><p>Visual Studio 2019 or VS Code</p>
+</li>
+<li><p><code>dotnet new blazorserver</code></p>
+</li>
+</ul><aside class="notes"><ul>
+<li><p>VS2019 has templates</p>
+</li>
+<li><p>MVC -&gt; <code>Models</code>, <code>Views</code>, <code>Controllers</code> folders</p>
+</li>
+<li><p>Blazor -&gt; <code>Pages</code>, <code>Models</code></p>
+</li>
+<li><p><code>_Host.cshtml</code> has layout page</p>
+</li>
+</ul></aside>
+</section>
+
+<section id="building-with-blazor-pages" class="slide" data-has-notes="true">
+<h3>Pages</h3><pre><code>
+<span class="hljs-keyword">@page</span> <span class="hljs-string">"/"</span>
+
+<span class="hljs-variable">@using</span> BlazorDemo.Data
+
+<span class="hljs-variable">@inject</span> UserData userData
+
+
+
+&lt;div class=<span class="hljs-string">"row"</span>&gt;
+
+    &lt;h1&gt;Intro&lt;/h1&gt;
+
+&lt;/div&gt;
+
+&lt;div class=<span class="hljs-string">"row"</span>&gt;
+
+  &lt;NavLink href=<span class="hljs-string">"/upload"</span> Match=<span class="hljs-string">"NavLinkMatch.Prefix"</span>&gt;Begin&lt;/NavLink&gt;
+
+&lt;/div&gt;
+
+
+
+<span class="hljs-variable">@code</span> {
+
+    <span class="hljs-selector-tag">protected</span> <span class="hljs-selector-tag">override</span> <span class="hljs-selector-tag">void</span> <span class="hljs-selector-tag">OnInitialized</span>()
+
+    {
+
+        <span class="hljs-selector-tag">userData</span><span class="hljs-selector-class">.Reset</span>();
+
+    }
+
+}
+
+</code></pre><aside class="notes"><ul>
+<li><p><code>@page &#39;about&#39;</code></p>
+</li>
+<li><p>Standard razor syntax </p>
+<ul>
+<li>(variables, loops, conditionals, etc.)</li>
+</ul>
+</li>
+<li><p><code>@code</code> contains properties &amp; logic</p>
+<ul>
+<li>Optionally in code-behind file</li>
+</ul>
+</li>
+</ul></aside>
+</section>
+
+<section id="building-with-blazor-components" class="slide" data-has-notes="true">
+<h3>Components</h3><pre><code>
+@<span class="hljs-keyword">using</span> BlazorDemo.Models
+
+
+
+&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">"photo-stack"</span>&gt;
+
+    @<span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">var</span> photo <span class="hljs-keyword">in</span> Photos) {
+
+        &lt;img src=<span class="hljs-string">"@photo.Path"</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">"rand@(rand.Next(0, 5))"</span> /&gt;
+
+    }
+
+&lt;/div&gt;
+
+
+
+@code {
+
+    <span class="hljs-keyword">private</span> Random rand = <span class="hljs-keyword">new</span> Random();
+
+    [<span class="hljs-meta">Parameter</span>]
+
+    <span class="hljs-keyword">public</span> List&lt;Photo&gt; Photos { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+}
+
+</code></pre><aside class="notes"><ul>
+<li><p>Building blocks</p>
+</li>
+<li><p><code>@code</code> Properties used as attributes</p>
+<ul>
+<li><p>Objects/primitives == data inputs</p>
+</li>
+<li><p>EventCallback<T> == event outputs</p>
+</li>
+</ul>
+</li>
+<li><p>Similar to Angular</p>
+</li>
+<li><p>Code-behind also available</p>
+</li>
+</ul></aside>
+</section>
+
+<section id="building-with-blazor-services" class="slide" data-has-notes="true">
+<h3>Services</h3><ul>
+<li><p>Regular classes</p>
+</li>
+<li><p>Dependency Injection</p>
+<ul>
+<li><code>Scoped</code> for Connection Lifetime</li>
+</ul>
+</li>
+<li><p>Re-usable across projects</p>
+</li>
+</ul><aside class="notes"><ul>
+<li><p>Singleton, Scoped, Transient</p>
+</li>
+<li><p>Singleton and Transient are the same</p>
+</li>
+</ul></aside>
+</section>
+
+<section id="building-with-blazor-debugging" class="slide" data-has-notes="true">
+<h3>Debugging</h3><ul>
+<li><p>Breakpoints in <code>.cshtml</code>/<code>.razor</code></p>
+</li>
+<li><p>Kinda slow</p>
+</li>
+<li><p><code>dotnet watch run</code></p>
+</li>
+<li><p>Improvements are planned</p>
+</li>
+</ul><aside class="notes"><ul>
+<li><p>Wishlist:</p>
+<ul>
+<li><p>Edit &amp; Continue</p>
+</li>
+<li><p>Live Reload (CSS/HTML changes)</p>
+</li>
+</ul>
+</li>
+</ul></aside>
+</section>
+</section>
+
+<section id="blazor-demo" class="slide" data-has-notes="true">
+<h1>Blazor Demo</h1><aside class="notes"><p><strong>DEMO FIRST</strong></p>
+<pre><code class="lang-sh">
+<span class="hljs-built_in">cd</span> 01-blazor-demo
+
+dotnet start BlazorDemo
+
+</code></pre>
+<ul>
+<li><p>Show the <code>Organize</code> page.</p>
+</li>
+<li><p>Dig into <code>MaxIdleSlider</code> component.</p>
+</li>
+<li><p>Routing (<code>NavigationManager</code>)</p>
+</li>
+<li><p>Shared data (<code>UserData</code>)</p>
+</li>
+</ul></aside>
+</section>
+
+<section id="chapter-intro-to-electron" class="chapter">
+<section id="intro-to-electron-title" class="slide" data-has-notes="true">
+<h2>Intro to Electron</h2><p><img src="images/electron-logo-transparent.png" alt="Electron Logo"></p><aside class="notes"><ul>
+<li><p>Who&#39;s heard of Electron?</p>
+</li>
+<li><p>Who&#39;s used Electron?</p>
+</li>
+</ul></aside>
+</section>
+
+<section id="intro-to-electron-details" class="slide" data-has-notes="true">
+<h3>What is Electron?</h3><ul>
+<li><p>Platform for desktop apps using web tech</p>
+</li>
+<li><p>Node.js + Chrome = Electron</p>
+</li>
+<li><p>Un-sandboxed environment</p>
+</li>
+<li><p>Cross-platform, accessible, extensible</p>
+</li>
+</ul>
+</section>
+
+<section id="intro-to-electron-architecture" class="slide" data-has-notes="true">
+<h4>Main Process</h4><ul>
+<li><p>Entry point</p>
+</li>
+<li><p>Primary process</p>
+</li>
+<li><p>Node.js file</p>
+</li>
+</ul>
+<h4>Renderer Process</h4><ul>
+<li><p>Per window</p>
+</li>
+<li><p>Uses IPC to communicate with Main</p>
+</li>
+<li><p>Full access to Node.js runtime</p>
+</li>
+</ul><aside class="notes"><ul>
+<li>IPC only needed in particular situations.</li>
+</ul></aside>
+</section>
+
+<section id="intro-to-electron-use-cases" class="slide" data-has-notes="false">
+<h3>Use Cases</h3><ul>
+<li><p>Fast iteration time for web developers</p>
+</li>
+<li><p>Reuse code across websites and desktop</p>
+</li>
+<li><p>True cross-platform UI and logic</p>
+</li>
+</ul>
+<h3>Built with Electron</h3><p>VS Code, Slack, Microsoft Teams,</p>
+<p>Postman, and MANY more!</p>
+</section>
+</section>
+
+<section id="chapter-building-with-electron" class="chapter">
+<section id="building-with-electron-title" class="slide" data-has-notes="true">
+<h2>Building With Electron</h2><aside class="notes"><ul>
+<li>Quick overview</li>
+</ul></aside>
+</section>
+
+<section id="building-with-electron-main" class="slide" data-has-notes="true">
+<h3>Main Process</h3><pre><code class="lang-js">
+<span class="hljs-keyword">const</span> {app, BrowserWindow} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'electron'</span>);
+
+
+
+<span class="hljs-keyword">let</span> win;
+
+app.on(<span class="hljs-string">'ready'</span>, () =&gt; {
+
+    win = <span class="hljs-keyword">new</span> BrowserWindow({ <span class="hljs-attr">width</span>: <span class="hljs-number">800</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">600</span> });
+
+    win.loadFile(<span class="hljs-string">'index.html'</span>);
+
+});
+
+</code></pre><aside class="notes"><ul>
+<li><p>Node.js and <code>npm install electron</code></p>
+</li>
+<li><p>Single JS entry point (<code>main.js</code>)</p>
+<ul>
+<li><p>Wait for app</p>
+</li>
+<li><p>Create and load <code>BrowserWindow</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Options for size, position, menus, dev tools, kiosk mode, etc.</li>
+</ul></aside>
+</section>
+
+<section id="building-with-electron-renderer" class="slide" data-has-notes="true">
+<h3>Renderer Process</h3><ul>
+<li><p>Regular HTML file</p>
+</li>
+<li><p>JS is Node.js (<code>require</code>/<code>import</code>)</p>
+</li>
+<li><p>Security can be reduced/disabled</p>
+</li>
+</ul><aside class="notes"><ul>
+<li>Security: CORS, <code>file://</code>, iframe, sandbox, certificates, etc.</li>
+</ul></aside>
+</section>
+
+<section id="building-with-electron-packaging" class="slide" data-has-notes="true">
+<h3>Packaging</h3><ul>
+<li><p>Executable or installer</p>
+</li>
+<li><p>Mac required to build for OSX, Windows and Linux aren&#39;t limited.</p>
+</li>
+<li><p><a href="forge"><code>electron-forge</code></a>, <a href="builder"><code>electron-builder</code></a>, <a href="packager"><code>electron-packager</code></a></p>
+</li>
+<li><p>Auto-update</p>
+</li>
+</ul><aside class="notes"><ul>
+<li><p>Complete branding requires building from source</p>
+</li>
+<li><p>Archive uncompresses on install/first run</p>
+</li>
+</ul></aside>
+</section>
+</section>
+
+<section id="electron-demo" class="slide" data-has-notes="true">
+<h2>Electron Demo</h2><aside class="notes"><pre><code class="lang-sh">
+<span class="hljs-built_in">cd</span> 02-electron-demo
+
+npm start
+
+</code></pre></aside>
+</section>
+
+<section id="chapter-desktop-with-blazor" class="chapter">
+<section id="desktop-with-blazor-title" class="slide" data-has-notes="true">
+<h2>Desktop with Blazor</h2><p><img src="images/blazor-electron-logo.png" alt="Blazor/Electron Logos"></p><aside class="notes"><ul>
+<li>Combining the two</li>
+</ul></aside>
+</section>
+
+<section id="desktop-with-blazor-setup" class="slide" data-has-notes="true">
+<h3>Setup</h3><ol>
+<li><p>Install <code>ElectronNET.API</code>/<code>ElectronNET.CLI</code></p>
+</li>
+<li><p>Initialize the project using <code>ElectronNET.CLI</code></p>
+</li>
+<li><p>Update 2 files (Program.cs and Startup.cs)</p>
+</li>
+</ol>
+<pre><code class="lang-sh">
+dotnet add package ElectronNET.API
+
+dotnet new tool-manifest
+
+dotnet tool install ElectronNET.CLI
+
+dotnet electronize init
+
+</code></pre>
+</section>
+
+<section id="desktop-with-blazor-usage" class="slide" data-has-notes="true">
+<h3>Usage</h3><ul>
+<li><p>Add ElectronNET specifics to Startup.cs</p>
+</li>
+<li><p><code>dotnet electronize start</code></p>
+</li>
+<li><p>Open DevTools</p>
+</li>
+</ul>
+</section>
+
+<section id="desktop-with-blazor-publishing" class="slide" data-has-notes="true">
+<h3>Publishing</h3><pre><code class="lang-sh">
+dotnet electronize build /target win
+
+<span class="hljs-comment"># OR</span>
+
+dotnet electronize build /target osx
+
+<span class="hljs-comment"># OR</span>
+
+dotnet electronize build /target linux
+
+</code></pre>
+<p><br/></p>
+<ul>
+<li><p>Unpacked binaries</p>
+</li>
+<li><p>Installer</p>
+</li>
+</ul><aside class="notes"><ul>
+<li><p>Creates installer</p>
+</li>
+<li><p>OSX only on Mac</p>
+</li>
+</ul></aside>
+</section>
+</section>
+
+<section id="desktop-blazor-demo" class="slide" data-has-notes="true">
+<h2>Desktop Blazor Demo</h2><aside class="notes"><ul>
+<li>Show the changes to <code>Program.cs</code> and <code>Startup.cs</code>.</li>
+</ul></aside>
+</section>
+
+<section id="questions" class="slide" data-has-notes="true">
+<h2>Questions?</h2><aside class="notes"><ul>
+<li><p>Electron, Blazor, Mandalorian?</p>
+</li>
+<li><p>Twitter</p>
+</li>
+</ul></aside>
+</section>
+
+<section id="thanks" class="slide" data-has-notes="false">
+<h1>Thanks!</h1><p><br/></p>
+<p><em>(Slides/Repo will be available later this week)</em></p>
+<p><br/></p>
+<p><br/></p>
+<p>@jimbuckio</p>
+<p><a href="https://jimbuck.io">https://jimbuck.io</a></p>
+</section></div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+
+      transition: Reveal.getQueryHash().transition || 'slide', // none/fade/slide/convex/concave/zoom
+
+      // Optional reveal.js plugins
+      dependencies: [
+        //{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        //{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        //{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true },
+        { src: 'plugin/notes/notes.js', async: true }
+      ]
+    });
+    </script>
+
+    <script src="js/dynamic-theme.js"></script><script src="js/custom.js"></script>
+
+  </body>
+</html>
